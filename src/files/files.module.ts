@@ -1,8 +1,4 @@
-import { forwardRef, Module } from "@nestjs/common";
-
-import { AuthModule } from "src/auth/auth.module";
-
-import { TextblockModule } from "src/textblock/textblock.module";
+import { Module } from "@nestjs/common";
 import { FilesService } from "./files.service";
 
 @Module({

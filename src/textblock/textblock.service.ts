@@ -23,14 +23,14 @@ export class TextblockService {
 
     if (!group) {
       throw new HttpException(
-        "group with this id does not exist",
+        "Группа с таким id существует",
         HttpStatus.BAD_REQUEST
       );
     }
 
     if (eqBlock) {
       throw new HttpException(
-        "Block with the same name already exists",
+        "Блок с таким именем существует",
         HttpStatus.BAD_REQUEST
       );
     }
@@ -59,19 +59,13 @@ export class TextblockService {
       const group = await this.groupService.findGroupById(+dto.groupId);
 
       if (!group) {
-        throw new HttpException(
-          "group with this id does not exist",
-          HttpStatus.BAD_REQUEST
-        );
+        throw new HttpException("Введи id правильно", HttpStatus.BAD_REQUEST);
       }
     }
 
     const block = await this.blockRepository.findByPk(+dto.id);
     if (!block) {
-      throw new HttpException(
-        "block with this id does not exist",
-        HttpStatus.BAD_REQUEST
-      );
+      throw new HttpException("Такого id нет", HttpStatus.BAD_REQUEST);
     }
 
     if (image) {

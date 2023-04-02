@@ -31,20 +31,14 @@ export class GroupService {
       const group = await this.groupRepository.create(dto);
       return group;
     } catch (err) {
-      throw new HttpException(
-        "Поменяй название",
-        HttpStatus.BAD_REQUEST
-      );
+      throw new HttpException("Поменяй название", HttpStatus.BAD_REQUEST);
     }
   }
 
   async updateGroupName(dto: updateGroupDto) {
     const group = await this.groupRepository.findByPk(dto.id);
     if (!group) {
-      throw new HttpException(
-        "Нет такого id",
-        HttpStatus.BAD_REQUEST
-      );
+      throw new HttpException("Нет такого id", HttpStatus.BAD_REQUEST);
     }
     group.name = dto.name;
     await group.save();

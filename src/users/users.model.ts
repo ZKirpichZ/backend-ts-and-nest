@@ -1,4 +1,11 @@
-import { Model, DataType, Column, Table, BelongsToMany, HasOne } from "sequelize-typescript";
+import {
+  Model,
+  DataType,
+  Column,
+  Table,
+  BelongsToMany,
+  HasOne,
+} from "sequelize-typescript";
 import { Profile } from "src/profile/profile.model";
 import { Role } from "src/roles/roles.model";
 import { UserRoles } from "src/roles/user-roles-model";
@@ -31,8 +38,8 @@ export class User extends Model<User, UserCreationAttrs> {
   banReason: string;
 
   @BelongsToMany(() => Role, () => UserRoles)
-  roles:Role[];
-  
+  roles: Role[];
+
   @HasOne(() => Profile)
   profile: Profile;
 }

@@ -8,7 +8,7 @@ import { User } from "src/users/users.model";
 export class ProfileService {
   constructor(
     @InjectModel(Profile) private profileRepository: typeof Profile,
-    @InjectModel(User) private userRepository: typeof User,
+    @InjectModel(User) private userRepository: typeof User
   ) {}
 
   async createProfile(dto: createProfileDto) {
@@ -24,7 +24,9 @@ export class ProfileService {
       }
     }
     await profile.save();
-    const user = await this.userRepository.findByPk(dto.id, {include:{all:true}});
+    const user = await this.userRepository.findByPk(dto.id, {
+      include: { all: true },
+    });
     return user;
   }
 }

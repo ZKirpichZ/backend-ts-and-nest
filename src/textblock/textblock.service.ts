@@ -50,6 +50,8 @@ export class TextblockService {
 
   async deleteBlock(dto: deleteTextBlockDto) {
     for (let id of dto.idArray) {
+      const block = await this.blockRepository.findOne({where: { id: id }})
+      await this.filesService.deleteFIle(block.image)
       await this.blockRepository.destroy({ where: { id: id } });
     }
   }

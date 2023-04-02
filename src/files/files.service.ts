@@ -28,4 +28,11 @@ export class FilesService {
       );
     }
   }
+
+  async deleteFIle(name: string) {
+    try {
+      const filePath = path.resolve(__dirname, "..", "static");
+      fs.unlinkSync(filePath + "/" + name);
+    } catch (err) {}
+  }
 }
